@@ -1,6 +1,8 @@
 import React, { Component, useState } from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import AddForm from '../pages/order-manage/page_add';
+import ModifyForm from '../pages/order-manage/page_modify';
+
 import OrderTable from '../pages/order-manage/page_order';
 import { Switch, Route, NavLink } from 'react-router-dom';
 import {
@@ -61,6 +63,7 @@ export default (props) => {
         >
           <Switch>
             <Route path="/manage/order/single/add" component={AddForm} />
+            <Route path="/manage/order/single/modify" component={ModifyForm} />
             <Route path="/manage/order" component={OrderTable} />
           </Switch>
         </Content>

@@ -20,10 +20,14 @@ import { staticColumns } from './util';
 import config from './config.json';
 import { Modal, DatePicker, Table, Icon } from 'antd';
 import { Link } from 'umi';
+import { connect } from 'dva';
 const { confirm } = Modal;
 const { RangePicker } = DatePicker;
 
-export default ({ order, history }) => {
+//
+const OrderPage = (para) => {
+  console.log('para=>', para);
+  const { dispatch, history } = para;
   const actionRef = useRef();
   const [dates, setDates] = useState([]);
   const [IptValue, setIptValue] = useState('');
@@ -216,9 +220,15 @@ export default ({ order, history }) => {
               <Menu>
                 <Menu.Item
                   key="modify"
-                  onClick={() => hd_btnAction.modify(props.text)}
+                  onClick={() => {
+                    dispatch({
+                      type: 'order-manage/set_record',
+                      payload: props.text,
+                    });
+                    history.push('/manage/order/single/modify');
+                  }}
                 >
-                  <Link to={'/manage/order/single/modify'}>修改</Link>
+                  修改
                 </Menu.Item>
                 <Menu.Item key="send" onClick={() => hd_btnAction.send()}>
                   <Link to={'/manage/order/single/send'}> 发货</Link>
@@ -360,3 +370,7 @@ export default ({ order, history }) => {
     </div>
   );
 };
+
+export default connect((paraIn) => {
+  return { order_manage: paraIn['order-manage'] };
+})(OrderPage);

@@ -10,7 +10,7 @@ import { Form, Input, notification, Button } from 'antd';
 import { LeftCircleOutlined } from '@ant-design/icons';
 const { TextArea } = Input;
 
-const Demo = (props) => {
+export default (props) => {
   const [iptErr, set_iptErr] = useState('');
   return (
     <React.Fragment>
@@ -166,5 +166,3 @@ const Demo = (props) => {
     </React.Fragment>
   );
 };
-
-export default Demo;
