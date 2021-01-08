@@ -1,0 +1,8 @@
+{
+  "apiEndpoint": "https://mock-server.dbjtech.com/mock/5fed68fc8d66e30020e15692",
+  "order": {
+    "fetchData": "/order/order/post",
+    "@add": "/order/batch/insert",
+    "add": "/order/single/insert"
+  }
+}
